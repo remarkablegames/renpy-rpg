@@ -8,7 +8,7 @@
 [![build](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/build.yml)
 [![lint](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/lint.yml/badge.svg)](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/lint.yml)
 
-📖 Write visual novels with Ren'Py Template.
+Ren'Py roguelike demo.
 
 Play the game on:
 
@@ -42,22 +42,6 @@ Clone the repository to the `Projects Directory`:
 git clone https://github.com/remarkablegames/renpy-roguelike.git
 cd renpy-roguelike
 ```
-
-Rename the project:
-
-```sh
-git grep -l 'Ren'Py Roguelike' | xargs sed -i '' -e 's/Ren'Py Roguelike/My Novel/g'
-```
-
-```sh
-git grep -l 'renpy-roguelike' | xargs sed -i '' -e 's/renpy-roguelike/my-novel/g'
-```
-
-Replace the assets:
-
-- [ ] `web-presplash.jpg`
-- [ ] `game/gui/main_menu.png`
-- [ ] `game/gui/window_icon.png`
 
 ## Run
 

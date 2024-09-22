@@ -16,6 +16,10 @@ Play the game on:
 
 ## Credits
 
+### Art
+
+- [Uncle Mugen](https://lemmasoft.renai.us/forums/viewtopic.php?t=17302)
+
 ### Audio
 
 - [Kenney Interface Sounds](https://kenney.nl/assets/interface-sounds)

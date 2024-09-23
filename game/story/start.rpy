@@ -1,11 +1,6 @@
 ﻿label start:
 
-    scene bg plain
+    show screen player_stats
+    show screen enemy_stats
 
-    show placeholder boy
-
-    player "You've created a new Ren'Py game."
-
-    player "Once you add a story, pictures, and music, you can release it to the world!"
-
-    jump end
+    jump combat

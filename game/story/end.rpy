@@ -1,11 +1,7 @@
-﻿# The game ends here.
+﻿label end:
 
-label end:
+    scene black with fade
 
-    scene black
-
-    "{b}End{/b}."
-
-    # This ends the game.
+    "{b}You died.{/b}"
 
     return

@@ -5,11 +5,11 @@ label enemy_turn:
     $ coinflip = renpy.random.choice([True, False])
 
     if coinflip:
-        "Enemy dealt [enemy_attack] damage."
+        "Enemy dealt [enemy_attack] damage to you."
         show placeholder boy with vpunch
         $ player.health -= enemy_attack
     else:
-        "Enemy healed [enemy_heal] HP."
+        "Enemy healed [enemy_heal] health."
         $ enemy.health += enemy_heal
 
     $ player.energy = player.energy_max

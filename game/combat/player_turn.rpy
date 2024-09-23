@@ -1,4 +1,4 @@
-label action:
+label player_turn:
 
     if enemy.health <= 0:
         $ victories += 1
@@ -19,7 +19,7 @@ label action:
 
             "You dealt [player_attack] to the enemy."
 
-            jump action
+            jump player_turn
 
         "Heal [player_heal], Energy -2" if player.energy >= 2:
             $ player.health += player_heal
@@ -27,7 +27,7 @@ label action:
 
             "You healed [player_heal] HP."
 
-            jump action
+            jump player_turn
 
         "End Turn":
-            jump end_turn
+            jump enemy_turn

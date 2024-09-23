@@ -8,4 +8,4 @@ label combat:
 
     $ player.energy = player.energy_max
 
-    jump action
+    jump player_turn

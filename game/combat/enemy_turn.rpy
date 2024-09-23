@@ -1,4 +1,4 @@
-label end_turn:
+label enemy_turn:
 
     $ enemy_attack = renpy.random.randint(1 + victories, 5 + victories)
     $ enemy_heal = renpy.random.randint(1 + victories, 5 + victories)
@@ -14,4 +14,4 @@ label end_turn:
 
     $ player.energy = player.energy_max
 
-    jump action
+    jump player_turn

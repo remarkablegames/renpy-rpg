@@ -1,6 +1,6 @@
 label combat:
 
-    $ enemy.random_health(5, 5 * (victories + 1))
+    $ enemy.random_health(5, 5 * (wins + 1))
 
     scene bg plain with fade
 

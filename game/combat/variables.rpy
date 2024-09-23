@@ -1,8 +1,8 @@
 default player = Stat({
     "health": 25,
-    "energy": 3,
+    "energy": 2,
 })
 
 default enemy = Stat()
 
-default victories = 0
+default wins = 0

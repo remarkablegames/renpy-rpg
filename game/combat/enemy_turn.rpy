@@ -1,7 +1,7 @@
 label enemy_turn:
 
-    $ enemy_attack = renpy.random.randint(1 + victories, 5 + victories)
-    $ enemy_heal = renpy.random.randint(1 + victories, 5 + victories)
+    $ enemy_attack = renpy.random.randint(1 + wins, 5 + wins)
+    $ enemy_heal = renpy.random.randint(1 + wins, 5 + wins)
 
     if enemy.health < enemy.health_max and coinflip():
         "Enemy healed [enemy_heal] health."

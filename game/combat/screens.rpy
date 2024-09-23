@@ -1,5 +1,5 @@
 screen stat(name, current, max):
-    text "[name]: [current]"
+    text "[name]: [current]/[max]"
     bar value AnimatedValue(current, max):
         xalign 0.5
         xsize 300

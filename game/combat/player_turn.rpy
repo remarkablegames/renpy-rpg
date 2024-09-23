@@ -6,6 +6,9 @@ label player_turn:
         "You defeated the enemy!"
         jump combat
 
+    if not player.energy:
+        jump enemy_turn
+
     $ player_attack = renpy.random.randint(1, 5)
     $ player_heal = renpy.random.randint(1, 5)
 
@@ -13,8 +16,8 @@ label player_turn:
         "Choose your action."
 
         "{color=#EE4B2B}Attack [player_attack]\n{color=#add8e6}Energy -1" if player.energy >= 1:
-            $ enemy.health -= player_attack
             $ player.energy -= 1
+            $ enemy.health -= player_attack
 
             show placeholder boy at shake, center
 
@@ -23,8 +26,8 @@ label player_turn:
             jump player_turn
 
         "{color=#af0}Heal [player_heal]\n{color=#add8e6}Energy -2" if player.energy >= 2:
-            $ player.health += player_heal
             $ player.energy -= 2
+            $ player.health = player.health_max if player.health + player_heal >= player.health_max else player.health + player_heal
 
             "You healed [player_heal] health."
 

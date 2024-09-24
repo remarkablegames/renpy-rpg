@@ -1,7 +1,5 @@
 ﻿label end:
 
-    scene black with fade
-
-    "{b}You died.{/b}"
+    "Wins: {b}[wins]{/b}"
 
     return

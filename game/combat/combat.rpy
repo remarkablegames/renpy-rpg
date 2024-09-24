@@ -1,8 +1,11 @@
 label combat:
 
-    scene bg plain with fade
+    scene bg plain with dissolve
 
     show placeholder boy with dissolve
+
+    show screen player_stats
+    show screen enemy_stats
 
     $ player.energy = player.energy_max
     $ enemy.health = enemy.health_max = round(5 * (wins + 1) * (1 + renpy.random.random()))

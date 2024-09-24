@@ -1,5 +1,8 @@
 label player_turn:
 
+    if player.health <= 0:
+        jump lose
+
     if enemy.health <= 0:
         jump win
 
@@ -11,7 +14,7 @@ label player_turn:
     menu:
         "Choose your action."
 
-        "{color=#EE4B2B}Attack [player.attack]\n{color=#add8e6}Energy -1" if player.energy >= 1:
+        "{color=#ee4b2b}Attack [player.attack]\n{color=#add8e6}Energy -1" if player.energy >= 1:
             $ player.energy -= 1
             $ enemy.health -= player.attack
 

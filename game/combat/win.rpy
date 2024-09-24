@@ -1,3 +1,6 @@
+init python:
+    import math
+
 label win:
 
     $ wins += 1
@@ -6,4 +9,6 @@ label win:
 
     "You defeated the enemy!"
 
-    jump combat
+    $ rewards = math.ceil(wins / 10)
+
+    jump reward

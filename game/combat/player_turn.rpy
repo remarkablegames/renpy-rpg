@@ -1,10 +1,7 @@
 label player_turn:
 
     if enemy.health <= 0:
-        $ wins += 1
-        hide placeholder boy with dissolve
-        "You defeated the enemy!"
-        jump combat
+        jump win
 
     if not player.energy:
         jump enemy_turn

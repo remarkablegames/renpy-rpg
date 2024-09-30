@@ -37,10 +37,11 @@ jobs:
       - name: Delete unnecessary files
         run: >
           find .
+          ! -name 'progressive_download.txt'
+          ! -name 'version.txt'
+          ! -name 'web-presplash.jpg'
           ! -path "*/.*"
           ! -path "*game*"
-          ! -name 'progressive_download.txt'
-          ! -name 'web-presplash.jpg'
           -delete
 
       - name: Build packages

@@ -1,20 +1,21 @@
 label player_turn:
 
+    $ config.menu_include_disabled = False
+
     if player.health <= 0:
         jump lose
 
     if enemy.health <= 0:
         jump win
 
-    if not player.energy:
-        jump enemy_turn
-
     $ player.turn()
+    $ config.menu_include_disabled = True
 
     menu:
         "Choose your action."
 
-        "{color=#ee4b2b}Attack [player.attack]\n{color=#add8e6}Energy -1" if player.energy >= 1:
+        "Attack {color=#ee4b2b}[player.attack]{/color},
+        Energy {color=#add8e6}-1{/color}" if player.energy >= 1:
             $ player.energy -= 1
             $ enemy.health -= player.attack
 
@@ -24,7 +25,8 @@ label player_turn:
 
             jump player_turn
 
-        "{color=#af0}Heal [player.heal]\n{color=#add8e6}Energy -2" if player.energy >= 2:
+        "Heal {color=#af0}[player.heal]{/color},
+        Energy {color=#add8e6}-2{/color}" if player.energy >= 2:
             $ player.energy -= 2
             $ player.apply_heal()
 

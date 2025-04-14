@@ -17,15 +17,15 @@ label reward:
             $ player.heal_min += reward_heal
             $ player.heal_max += reward_heal
 
-        "Recover all health":
-            $ player.health = player.health_max
-
         "Increase max health by {color=#af0}+[reward_heal]" if renpy.random.random() < 0.6:
             $ player.health += reward_heal
             $ player.health_max += reward_heal
 
         "Increase max energy by {color=#add8e6}+1" if wins > 5 and renpy.random.random() < 1 / wins:
             $ player.energy_max += 1
+
+        "Recover all health":
+            $ player.health = player.health_max
 
     $ rewards -= 1
 

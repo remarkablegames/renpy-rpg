@@ -9,11 +9,11 @@ label reward:
     menu:
         "Choose a reward (remaining: [rewards])."
 
-        "Increase base attack by {color=#ee4b2b}+[reward_attack]":
+        "Increase attack by {color=#ee4b2b}+[reward_attack]":
             $ player.attack_min += reward_attack
             $ player.attack_max += reward_attack
 
-        "Increase base heal by {color=#af0}+[reward_heal]":
+        "Increase heal by {color=#af0}+[reward_heal]":
             $ player.heal_min += reward_heal
             $ player.heal_max += reward_heal
 

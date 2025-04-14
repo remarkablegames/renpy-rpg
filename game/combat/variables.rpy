@@ -3,7 +3,7 @@ default player = Stat({
     "energy": 2,
     "attack_min": 1,
     "attack_max": 3,
-    "heal_min": 1,
+    "heal_min": 2,
     "heal_max": 5,
 })
 

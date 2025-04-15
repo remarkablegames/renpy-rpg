@@ -1,1 +1,1 @@
-default enemy = Stat()
+default enemy = RPGCharacter()

@@ -1,1 +1,0 @@
-﻿define player = Character("Player")

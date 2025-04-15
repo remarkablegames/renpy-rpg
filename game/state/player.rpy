@@ -1,4 +1,4 @@
-default player = Stat({
+default player = RPGCharacter({
     "health": 15,
     "energy": 2,
     "attack_min": 1,

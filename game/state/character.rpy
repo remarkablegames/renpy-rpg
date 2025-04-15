@@ -1,5 +1,5 @@
 init python:
-    class Stat():
+    class RPGCharacter():
         def __init__(self, stat: dict = {}) -> None:
             self.health = self.health_max = stat.get("health", 0)
             self.energy = self.energy_max = stat.get("energy", 0)

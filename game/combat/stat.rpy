@@ -1,5 +1,16 @@
 init python:
     class Stat():
+        health: int
+        health_max: int
+        energy: int
+        energy_max: int
+        attack: int
+        attack_min: int
+        attack_max: int
+        heal: int
+        heal_min: int
+        heal_max: int
+
         def __init__(self, stat: dict = {}) -> None:
             self.health = self.health_max = stat.get("health", 0)
             self.energy = self.energy_max = stat.get("energy", 0)
@@ -12,11 +23,17 @@ init python:
             self.heal_min = stat.get("heal_min", 0)
             self.heal_max = stat.get("heal_max", 0)
 
-        def turn(self) -> None:
+        def turn_rng(self) -> None:
+            """
+            Generate random numbers for turn.
+            """
             self.attack = renpy.random.randint(self.attack_min, self.attack_max)
             self.heal = renpy.random.randint(self.heal_min, self.heal_max)
 
         def apply_heal(self) -> None:
+            """
+            Apply heal.
+            """
             if self.health + self.heal >= self.health_max:
                 self.health = self.health_max
             else:

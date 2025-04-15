@@ -8,7 +8,7 @@ label player_turn:
     if enemy.health <= 0:
         jump win
 
-    $ player.turn()
+    $ player.turn_rng()
     $ config.menu_include_disabled = True
 
     menu:

@@ -1,6 +1,9 @@
 init python:
     class Emoji:
-        def __init__(self):
+        one: str
+        two: str
+
+        def __init__(self) -> None:
             self.one = "1️⃣"
             self.two = "2️⃣"
 

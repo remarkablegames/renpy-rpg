@@ -1,6 +1,6 @@
 label enemy_turn:
 
-    $ enemy.turn()
+    $ enemy.turn_rng()
 
     if enemy.health < enemy.health_max and coinflip():
         "Enemy healed [enemy.heal] health."

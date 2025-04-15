@@ -15,7 +15,7 @@ label player_turn:
         "Choose your action."
 
         "Attack {color=#ee4b2b}[player.attack]{/color},
-        Energy {color=#add8e6}-1{/color}" if player.energy >= 1:
+        Energy {color=#add8e6}[emoji.one]{/color}" if player.energy >= 1:
             $ player.energy -= 1
             $ enemy.health -= player.attack
 
@@ -26,7 +26,7 @@ label player_turn:
             jump player_turn
 
         "Heal {color=#af0}[player.heal]{/color},
-        Energy {color=#add8e6}-2{/color}" if player.energy >= 2:
+        Energy {color=#add8e6}[emoji.two]{/color}" if player.energy >= 2:
             $ player.energy -= 2
             $ player.apply_heal()
 

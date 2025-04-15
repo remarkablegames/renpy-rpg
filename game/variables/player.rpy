@@ -6,7 +6,3 @@ default player = Stat({
     "heal_min": 2,
     "heal_max": 5,
 })
-
-default enemy = Stat()
-
-default wins = 0

@@ -1,0 +1,1 @@
+default wins = 0

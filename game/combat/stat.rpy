@@ -1,16 +1,5 @@
 init python:
     class Stat():
-        health: int
-        health_max: int
-        energy: int
-        energy_max: int
-        attack: int
-        attack_min: int
-        attack_max: int
-        heal: int
-        heal_min: int
-        heal_max: int
-
         def __init__(self, stat: dict = {}) -> None:
             self.health = self.health_max = stat.get("health", 0)
             self.energy = self.energy_max = stat.get("energy", 0)

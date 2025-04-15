@@ -12,8 +12,8 @@ init python:
     class Actions:
         def __init__(self) -> None:
             self.choices = {
-                "attack": Choice("Attack", "#ee4b2b", "[player.attack]", 1, self.attack),
-                "heal": Choice("Heal", "#af0", "[player.heal]", 2, self.heal),
+                "attack": Choice("Attack", "[colors.attack]", "[player.attack]", 1, self.attack),
+                "heal": Choice("Heal", "[colors.heal]", "[player.heal]", 2, self.heal),
             }
 
         def display_menu(self) -> None:

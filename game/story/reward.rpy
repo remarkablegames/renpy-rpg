@@ -9,19 +9,19 @@ label reward:
     menu:
         "Choose a reward (remaining: [rewards])."
 
-        "Increase attack by {color=#ee4b2b}+[reward_attack]":
+        "Increase attack by {color=[colors.attack]}+[reward_attack]":
             $ player.attack_min += reward_attack
             $ player.attack_max += reward_attack
 
-        "Increase heal by {color=#af0}+[reward_heal]":
+        "Increase heal by {color=[colors.heal]}+[reward_heal]":
             $ player.heal_min += reward_heal
             $ player.heal_max += reward_heal
 
-        "Increase max health by {color=#af0}+[reward_heal]" if renpy.random.random() < 0.6:
+        "Increase max health by {color=[colors.heal]}+[reward_heal]" if renpy.random.random() < 0.6:
             $ player.health += reward_heal
             $ player.health_max += reward_heal
 
-        "Increase max energy by {color=#add8e6}+1" if wins > 5 and renpy.random.random() < 1 / wins:
+        "Increase max energy by {color=[colors.energy]}+1" if wins > 5 and renpy.random.random() < 1 / wins:
             $ player.energy_max += 1
 
         "Recover all health":

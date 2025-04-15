@@ -2,7 +2,7 @@ init python:
     from typing import Callable
 
     class Choice:
-        def __init__(self, name: str, color: str, value: str, energy: int, callback) -> None:
+        def __init__(self, name: str, color: str, value: str, energy: int, callback: Callable) -> None:
             self.name = name
             self.color = color
             self.value = value

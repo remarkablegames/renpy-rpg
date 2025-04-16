@@ -1,7 +1,7 @@
 label reward:
 
     if not rewards:
-        jump combat
+        jump combat_start
 
     $ reward_attack = renpy.random.randint(1, 2 + wins)
     $ reward_heal = renpy.random.randint(1, 3 + wins)

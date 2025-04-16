@@ -2,4 +2,4 @@ label start:
 
     $ config.rollback_enabled = False
 
-    jump combat
+    jump combat_start

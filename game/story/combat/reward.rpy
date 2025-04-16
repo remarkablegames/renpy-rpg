@@ -24,7 +24,7 @@ label reward:
         "Increase max energy by {color=[colors.energy]}+1" if wins > 5 and renpy.random.random() < 1 / wins:
             $ player.energy_max += 1
 
-        "Recover all health":
+        "Recover all health" if player.health < player.health_max:
             $ player.health = player.health_max
 
     $ rewards -= 1

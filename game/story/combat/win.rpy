@@ -2,6 +2,8 @@ init python:
     from math import ceil
 
 default money = 0
+default interest = 0
+default rewards = 0
 default wins = 0
 
 label win:
@@ -12,10 +14,11 @@ label win:
 
     "You defeated the enemy!"
 
-    $ money += wins + abs(enemy.health)
+    $ interest = ceil(money * 0.2)
+    $ money += wins + interest
 
-    "You earned $[wins] + $[abs(enemy.health)] (bonus)."
+    "You earned $[wins] + $[interest] (interest)."
 
-    $ rewards = ceil(wins / 10)
+    $ rewards += 1
 
     jump reward

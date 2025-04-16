@@ -1,6 +1,4 @@
 init python:
-    from typing import Callable
-
     class Skill:
         def __init__(self, **kwargs) -> None:
             self.name = kwargs.get("name")
@@ -9,7 +7,6 @@ init python:
             self.energy = kwargs.get("energy")
             self.callback = kwargs.get("callback")
             self.enabled = kwargs.get("enabled", False)
-
 
     class Player(RPGCharacter):
         def __init__(self, **kwargs) -> None:

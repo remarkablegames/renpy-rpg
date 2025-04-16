@@ -8,6 +8,7 @@ init python:
             self.value = kwargs.get("value")
             self.energy = kwargs.get("energy")
             self.callback = kwargs.get("callback")
+            self.enabled = kwargs.get("enabled", False)
 
 
     class Player(RPGCharacter):
@@ -21,6 +22,7 @@ init python:
                     value="[player.attack]",
                     energy=1,
                     callback=self.action_attack,
+                    enabled=True,
                 ),
 
                 "heal": Skill(
@@ -31,6 +33,12 @@ init python:
                     callback=self.action_heal,
                 ),
             }
+
+        def has_skill(self, skill: str) -> bool:
+            return self.skills.get(skill).enabled
+
+        def toggle_skill(self, skill: str, is_enabled: bool) -> None:
+            self.skills.get(skill).enabled = is_enabled
 
         def display_menu(self) -> None:
             """
@@ -47,13 +55,18 @@ init python:
             self.turn_rng()
             choices = []
 
-            for choice in self.skills.values():
-                energy_cost = choice.energy
+            for skill in self.skills.values():
+                if not skill.enabled:
+                    continue
+
+                energy_cost = skill.energy
+
                 if self.energy < energy_cost:
-                    label = f"{{color=[gui.insensitive_color]}}{choice.name} {choice.value}, Energy {energy_cost}"
+                    label = f"{{color=[gui.insensitive_color]}}{skill.name} {skill.value}, Energy {energy_cost}"
                 else:
-                    label = f"{choice.name} {{color={choice.color}}}{choice.value}{{/color}}, Energy [emojis.get({energy_cost})]"
-                choices.append((label, choice.callback))
+                    label = f"{skill.name} {{color={skill.color}}}{skill.value}{{/color}}, Energy [emojis.get({energy_cost})]"
+
+                choices.append((label, skill.callback))
 
             return choices + [("End Turn", self.end_turn)]
 

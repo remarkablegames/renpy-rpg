@@ -1,7 +1,7 @@
 label reward:
 
     if not rewards:
-        jump combat
+        jump shop
 
     $ reward_attack = renpy.random.randint(1, 2 + wins)
     $ reward_heal = renpy.random.randint(1, 3 + wins)
@@ -13,7 +13,7 @@ label reward:
             $ player.attack_min += reward_attack
             $ player.attack_max += reward_attack
 
-        "Increase heal by {color=[colors.heal]}+[reward_heal]":
+        "Increase heal by {color=[colors.heal]}+[reward_heal]" if player.has_skill("heal"):
             $ player.heal_min += reward_heal
             $ player.heal_max += reward_heal
 

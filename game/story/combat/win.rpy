@@ -1,7 +1,7 @@
 init python:
     from math import ceil
 
-default gold = 0
+default money = 0
 default wins = 0
 
 label win:
@@ -12,7 +12,7 @@ label win:
 
     "You defeated the enemy!"
 
-    $ gold += wins + abs(enemy.health)
+    $ money += wins + abs(enemy.health)
 
     "You earned $[wins] + $[abs(enemy.health)] (bonus)."
 

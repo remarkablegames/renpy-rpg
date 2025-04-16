@@ -36,7 +36,7 @@ init python:
                 if player.energy < energy_cost:
                     label = f"{{color=[gui.insensitive_color]}}{choice.name} {choice.value}, Energy {energy_cost}"
                 else:
-                    label = f"{choice.name} {{color={choice.color}}}{choice.value}{{/color}}, Energy [emoji.get({energy_cost})]"
+                    label = f"{choice.name} {{color={choice.color}}}{choice.value}{{/color}}, Energy [emojis.get({energy_cost})]"
                 choices.append((label, choice.callback))
 
             return choices + [("End Turn", self.end_turn)]

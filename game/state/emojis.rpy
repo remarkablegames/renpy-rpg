@@ -1,5 +1,5 @@
 init python:
-    class Emoji:
+    class Emojis:
         def __init__(self) -> None:
             self.emojis = {
                 "1": "1️⃣",
@@ -7,9 +7,6 @@ init python:
             }
 
         def get(self, key) -> str:
-            """
-            Get emoji.
-            """
-            return self.emojis[str(key)]
+            return self.emojis.get(str(key))
 
-default emoji = Emoji()
+default emojis = Emojis()

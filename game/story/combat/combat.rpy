@@ -1,4 +1,4 @@
-label combat_start:
+label combat:
 
     scene bg plain with dissolve
 

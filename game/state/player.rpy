@@ -34,7 +34,7 @@ init python:
 
         def display_menu(self) -> None:
             """
-            Combat display menu.
+            Display menu.
             """
             narrator("Choose your action.", interact=False)
             action = renpy.display_menu(self.get_menu_choices())

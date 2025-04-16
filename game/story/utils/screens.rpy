@@ -12,6 +12,8 @@ screen player_stats():
             use stat("Health", player.health, player.health_max)
             null height 15
             use stat("Energy", player.energy, player.energy_max)
+            null height 15
+            text "Money: $[gold]"
 
 screen enemy_stats():
     frame:

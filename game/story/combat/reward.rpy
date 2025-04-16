@@ -7,7 +7,7 @@ label reward:
     $ reward_heal = renpy.random.randint(1, 3 + wins)
 
     menu:
-        "Choose a reward (remaining: [rewards])."
+        "Choose your reward (remaining: [rewards])."
 
         "Increase attack by {color=[colors.attack]}+[reward_attack]":
             $ player.attack_min += reward_attack

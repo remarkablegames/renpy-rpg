@@ -1,16 +1,16 @@
 init python:
     class RPGCharacter():
-        def __init__(self, stat: dict = {}) -> None:
-            self.health = self.health_max = stat.get("health", 0)
-            self.energy = self.energy_max = stat.get("energy", 0)
+        def __init__(self, **kwargs) -> None:
+            self.health = self.health_max = kwargs.get("health", 0)
+            self.energy = self.energy_max = kwargs.get("energy", 0)
 
             self.attack = 0
-            self.attack_min = stat.get("attack_min", 0)
-            self.attack_max = stat.get("attack_max", 0)
+            self.attack_min = kwargs.get("attack_min", 0)
+            self.attack_max = kwargs.get("attack_max", 0)
 
             self.heal = 0
-            self.heal_min = stat.get("heal_min", 0)
-            self.heal_max = stat.get("heal_max", 0)
+            self.heal_min = kwargs.get("heal_min", 0)
+            self.heal_max = kwargs.get("heal_max", 0)
 
         def turn_rng(self) -> None:
             """
@@ -21,7 +21,7 @@ init python:
 
         def apply_heal(self) -> None:
             """
-            Apply heal.
+            Heal character.
             """
             if self.health + self.heal >= self.health_max:
                 self.health = self.health_max

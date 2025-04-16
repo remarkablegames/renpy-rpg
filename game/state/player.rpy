@@ -12,14 +12,7 @@ init python:
 
     class Player(RPGCharacter):
         def __init__(self, **kwargs) -> None:
-            super().__init__(
-                health=15,
-                energy=2,
-                attack_min=1,
-                attack_max=3,
-                heal_min=2,
-                heal_max=5,
-            )
+            super().__init__(**kwargs)
 
             self.skills = {
                 "attack": Skill(
@@ -56,7 +49,7 @@ init python:
 
             for choice in self.skills.values():
                 energy_cost = choice.energy
-                if player.energy < energy_cost:
+                if self.energy < energy_cost:
                     label = f"{{color=[gui.insensitive_color]}}{choice.name} {choice.value}, Energy {energy_cost}"
                 else:
                     label = f"{choice.name} {{color={choice.color}}}{choice.value}{{/color}}, Energy [emojis.get({energy_cost})]"
@@ -69,11 +62,11 @@ init python:
             Attack action.
             """
             energy_cost = self.skills["attack"].energy
-            if player.energy < energy_cost:
+            if self.energy < energy_cost:
                 narrator("You don't have enough energy.")
             else:
-                player.energy -= energy_cost
-                enemy.health -= player.attack
+                self.energy -= energy_cost
+                enemy.health -= self.attack
                 renpy.show("placeholder boy", at_list=[shake])
                 narrator("You dealt [player.attack] damage to the enemy.")
 
@@ -84,11 +77,11 @@ init python:
             Heal action.
             """
             energy_cost = self.skills["heal"].energy
-            if player.energy < energy_cost:
+            if self.energy < energy_cost:
                 narrator("You don't have enough energy.")
             else:
-                player.energy -= energy_cost
-                player.apply_heal()
+                self.energy -= energy_cost
+                self.apply_heal()
                 narrator("You healed [player.heal] health.")
 
             renpy.jump("player_turn")
@@ -99,4 +92,11 @@ init python:
             """
             renpy.jump("enemy_turn")
 
-default player = Player()
+default player = Player(
+    health=15,
+    energy=2,
+    attack_min=1,
+    attack_max=3,
+    heal_min=2,
+    heal_max=5,
+)

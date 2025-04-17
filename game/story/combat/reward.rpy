@@ -3,8 +3,8 @@ label reward:
     if not rewards:
         jump shop
 
-    $ reward_attack = renpy.random.randint(1, 2 + round(wins / 2))
-    $ reward_heal = renpy.random.randint(1, 3 + round(wins / 2))
+    $ reward_attack = renpy.random.randint(1, 2 + wins // 2)
+    $ reward_heal = renpy.random.randint(1, 3 + wins // 2)
 
     menu:
         "Choose your reward (remaining: [rewards])."
@@ -26,7 +26,7 @@ label reward:
             $ player.health += reward_heal * 2
             $ player.health_max += reward_heal * 2
 
-        "Increase max energy by {color=[colors.energy]}+1" if not wins % 3 and renpy.random.random() < 0.5:
+        "Increase max energy by {color=[colors.energy]}+1" if renpy.random.random() < 0.1:
             $ player.energy_max += 1
 
         "Recover all health" if player.health < player.health_max:

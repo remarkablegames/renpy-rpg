@@ -13,8 +13,8 @@ label shop:
 
             jump shop
 
-        "Get a reward (-$[wins * 3])" if money >= wins * 3:
-            $ money -= wins * 3
+        "Get a reward (-$[wins * 2])" if money >= wins * 2:
+            $ money -= wins * 2
             $ rewards += 1
             $ config.menu_include_disabled = False
 

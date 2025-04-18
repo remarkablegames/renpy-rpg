@@ -19,7 +19,7 @@ init python:
             self.attack = renpy.random.randint(self.attack_min, self.attack_max)
             self.heal = renpy.random.randint(self.heal_min, self.heal_max)
 
-        def apply_heal(self) -> None:
+        def perform_heal(self) -> None:
             """
             Heal character.
             """

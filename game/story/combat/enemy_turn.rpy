@@ -4,7 +4,7 @@ label enemy_turn:
 
     if enemy.health < enemy.health_max and coinflip():
         "Enemy healed [enemy.heal] health."
-        $ enemy.apply_heal()
+        $ enemy.perform_heal()
 
     else:
         "Enemy dealt [enemy.attack] damage to you."

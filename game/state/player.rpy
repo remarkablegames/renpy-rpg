@@ -1,10 +1,9 @@
 init python:
     class Skill:
         def __init__(self, **kwargs) -> None:
-            self.name = kwargs.get("name")
-            self.color = kwargs.get("color")
-            self.value = kwargs.get("value")
-            self.energy = kwargs.get("energy")
+            self.label_active = kwargs.get("label_active", "")
+            self.label_disabled = kwargs.get("label_disabled", "")
+            self.energy = kwargs.get("energy", 0)
             self.callback = kwargs.get("callback")
             self.enabled = kwargs.get("enabled", False)
 
@@ -14,20 +13,23 @@ init python:
 
             self.skills = {
                 "attack": Skill(
-                    name="Attack",
-                    color="[colors.attack]",
-                    value="[player.attack]",
-                    energy=1,
                     callback=self.action_attack,
                     enabled=True,
+                    energy=1,
+                    label_active="Attack {color=[colors.attack]}[player.attack]{/color}, Energy [emojis.get(player.skills['attack'].energy)]",
+                    label_disabled="{color=[gui.insensitive_color]}Attack [player.attack], Energy [player.skills['attack'].energy]",
                 ),
 
                 "heal": Skill(
-                    name="Heal",
-                    color="[colors.heal]",
-                    value="[player.heal]",
-                    energy=2,
                     callback=self.action_heal,
+                    energy=2,
+                    label_active="Heal {color=[colors.heal]}[player.heal]{/color}, Energy [emojis.get(player.skills['heal'].energy)]",
+                    label_disabled="{color=[gui.insensitive_color]}Heal [player.heal], Energy [player.skills['heal'].energy]",
+                ),
+
+                "energize": Skill(
+                    callback=self.action_energize,
+                    label_active="Energy {color=[colors.energy]}+1{/color}, Health {color=[colors.heal]}-[player.health_max // 4]",
                 ),
             }
 
@@ -53,27 +55,19 @@ init python:
             choices = []
 
             for skill in self.skills.values():
-                if not skill.enabled:
-                    continue
-
-                energy_cost = skill.energy
-
-                if self.energy < energy_cost:
-                    label = f"{{color=[gui.insensitive_color]}}{skill.name} {skill.value}, Energy {energy_cost}"
-                else:
-                    label = f"{skill.name} {{color={skill.color}}}{skill.value}{{/color}}, Energy [emojis.get({energy_cost})]"
-
-                choices.append((label, skill.callback))
+                if skill.enabled:
+                    skill_label = skill.label_disabled if self.energy < skill.energy else skill.label_active
+                    choices.append((skill_label, skill.callback))
 
             return choices + [("End Turn", self.end_turn)]
 
         def action_attack(self) -> None:
             """
-            Attack action.
+            Attack enemy.
             """
             energy_cost = self.skills["attack"].energy
             if self.energy < energy_cost:
-                narrator("You don't have enough energy.")
+                narrator("You don’t have enough energy.")
             else:
                 self.energy -= energy_cost
                 enemy.health -= self.attack
@@ -84,15 +78,26 @@ init python:
 
         def action_heal(self) -> None:
             """
-            Heal action.
+            Heal player.
             """
             energy_cost = self.skills["heal"].energy
             if self.energy < energy_cost:
-                narrator("You don't have enough energy.")
+                narrator("You don’t have enough energy.")
             else:
                 self.energy -= energy_cost
-                self.apply_heal()
+                self.perform_heal()
                 narrator("You healed [player.heal] health.")
+
+            renpy.jump("player_turn")
+
+        def action_energize(self) -> None:
+            """
+            Decrease health and increase energy.
+            """
+            health_cost = self.health_max // 4
+            self.health -= health_cost
+            self.energy += 1
+            narrator(f"You gained 1 energy and lost {health_cost} health.")
 
             renpy.jump("player_turn")
 

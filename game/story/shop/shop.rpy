@@ -16,6 +16,14 @@ label shop:
 
             jump shop
 
+        "Learn “Energize” (-$3)" if not player.has_skill("energize") and money >= 3:
+            $ money -= 3
+            $ player.toggle_skill("energize", True)
+
+            "You learned “Energize”."
+
+            jump shop
+
         "Get a reward (-$[floor(wins * 1.5)])" if money >= floor(wins * 1.5):
             $ money -= floor(wins * 1.5)
             $ rewards += 1

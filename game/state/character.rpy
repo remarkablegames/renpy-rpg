@@ -7,6 +7,7 @@ init python:
             self.attack = 0
             self.attack_min = kwargs.get("attack_min", 0)
             self.attack_max = kwargs.get("attack_max", 0)
+            self.attack_multiplier = kwargs.get("attack_multiplier", 1.0)
 
             self.heal = 0
             self.heal_min = kwargs.get("heal_min", 0)
@@ -16,7 +17,7 @@ init python:
             """
             Generate random numbers for turn.
             """
-            self.attack = renpy.random.randint(self.attack_min, self.attack_max)
+            self.attack = round(renpy.random.randint(self.attack_min, self.attack_max) * self.attack_multiplier)
             self.heal = renpy.random.randint(self.heal_min, self.heal_max)
 
         def perform_heal(self) -> None:
@@ -27,3 +28,9 @@ init python:
                 self.health = self.health_max
             else:
                 self.health += self.heal
+
+        def reset(self) -> None:
+            """
+            Reset stats.
+            """
+            self.attack_multiplier = 1.0

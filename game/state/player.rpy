@@ -31,6 +31,13 @@ init python:
                     callback=self.action_energize,
                     label_active="Energy {color=[colors.energy]}+1{/color}, Health {color=[colors.heal]}-[player.health_max // 4]",
                 ),
+
+                "enrage": Skill(
+                    callback=self.action_enrage,
+                    energy=1,
+                    label_active="Attack {color=[colors.attack]}+20%{/color}, Energy [emojis.get(player.skills['enrage'].energy)]",
+                    label_disabled="{color=[gui.insensitive_color]}Attack +20%, Energy [player.skills['enrage'].energy]",
+                ),
             }
 
         def has_skill(self, skill: str) -> bool:
@@ -98,6 +105,20 @@ init python:
             self.health -= health_cost
             self.energy += 1
             narrator(f"You gained 1 energy and lost {health_cost} health.")
+
+            renpy.jump("player_turn")
+
+        def action_enrage(self) -> None:
+            """
+            Increase attack multiplier.
+            """
+            energy_cost = self.skills["attack"].energy
+
+            if self.energy < energy_cost:
+                narrator("You don’t have enough energy.")
+            else:
+                self.energy -= energy_cost
+                self.attack_multiplier += 0.2
 
             renpy.jump("player_turn")
 

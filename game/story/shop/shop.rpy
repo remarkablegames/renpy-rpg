@@ -24,6 +24,15 @@ label shop:
 
             jump shop
 
+        "Learn “Enrage” (-$5)" if not player.has_skill("enrage") and money >= 5:
+            $ money -= 5
+            $ player.toggle_skill("enrage", True)
+            $ player.attack_max = player.attack_min
+
+            "You learned “Enrage”."
+
+            jump shop
+
         "Get a reward (-$[floor(wins * 1.5)])" if money >= floor(wins * 1.5):
             $ money -= floor(wins * 1.5)
             $ rewards += 1

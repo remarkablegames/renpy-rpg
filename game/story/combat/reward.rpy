@@ -26,6 +26,9 @@ label reward:
             $ player.health += reward_heal * 2
             $ player.health_max += reward_heal * 2
 
+        "Decrease energy of heal by {color=[colors.energy]}1" if renpy.random.random() < 0.3 and player.has_skill("heal") and player.skills["heal"].energy > 1:
+            $ player.skills["heal"].energy -= 1
+
         "Increase max energy by {color=[colors.energy]}+1" if renpy.random.random() < 0.1:
             $ player.energy_max += 1
 

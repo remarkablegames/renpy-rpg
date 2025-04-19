@@ -28,8 +28,8 @@ init python:
                     label_disabled="{color=[gui.insensitive_color]}Heal [player.heal], Energy [player.skills['heal'].energy]",
                 ),
 
-                "energize": Skill(
-                    callback=self.action_energize,
+                "life_force": Skill(
+                    callback=self.action_life_force,
                     label_active="Energy {color=[colors.energy]}+1{/color}, Health {color=[colors.heal]}-[player.health_max // 4]",
                 ),
 
@@ -84,10 +84,7 @@ init python:
                 renpy.show("placeholder boy", at_list=[shake])
                 narrator("You dealt [player.attack] damage to the enemy.")
 
-                if enemy.health <= 0:
-                    renpy.jump("win")
-
-                if "stun" in attack_skill.tags and renpy.random.random() < 0.2:
+                if enemy.health > 0 and "stun" in attack_skill.tags and renpy.random.random() < 0.2:
                     enemy.stunned = True
                     renpy.show("placeholder boy", at_list=[shake])
                     narrator("You stunned the enemy!")
@@ -110,9 +107,9 @@ init python:
 
             renpy.jump("player_turn")
 
-        def action_energize(self) -> None:
+        def action_life_force(self) -> None:
             """
-            Decrease health and increase energy.
+            Convert health to energy.
             """
             health_cost = self.health_max // 4
             self.health -= health_cost

@@ -1,8 +1,5 @@
 label enemy_turn:
 
-    if enemy.health <= 0:
-        jump win
-
     if enemy.stunned:
         "The enemy is stunned!"
 
@@ -21,9 +18,6 @@ label enemy_turn:
     jump enemy_turn_end
 
 label enemy_turn_end:
-
-    if player.health <= 0:
-        jump lose
 
     $ enemy.stunned = False
     $ player.energy = player.energy_max

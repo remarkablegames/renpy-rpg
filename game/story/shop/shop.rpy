@@ -34,11 +34,11 @@ label shop:
 
             jump shop
 
-        "Learn “Energize” (-$3)" if not player.has_skill("energize") and money >= 3:
+        "Learn “Life Force” (-$3)" if not player.has_skill("life_force") and money >= 3:
             $ money -= 3
-            $ player.toggle_skill("energize", True)
+            $ player.toggle_skill("life_force", True)
 
-            "You learned “Energize”."
+            "You learned “Life Force”."
 
             jump shop
 

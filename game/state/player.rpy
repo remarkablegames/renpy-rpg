@@ -32,11 +32,11 @@ init python:
                     label_active="Energy {color=[colors.energy]}+1{/color}, Health {color=[colors.heal]}-[player.health_max // 4]",
                 ),
 
-                "enrage": Skill(
+                "rage": Skill(
                     callback=self.action_enrage,
                     energy=1,
-                    label_active="Attack {color=[colors.attack]}+20%{/color}, Energy [emojis.get(player.skills['enrage'].energy)]",
-                    label_disabled="{color=[gui.insensitive_color]}Attack +20%, Energy [player.skills['enrage'].energy]",
+                    label_active="Attack {color=[colors.attack]}+100%{/color}, Energy [emojis.get(player.skills['rage'].energy)]",
+                    label_disabled="{color=[gui.insensitive_color]}Attack +100%, Energy [player.skills['rage'].energy]",
                 ),
             }
 
@@ -118,7 +118,7 @@ init python:
                 narrator("You don’t have enough energy.")
             else:
                 self.energy -= energy_cost
-                self.attack_multiplier += 0.2
+                self.attack_multiplier += 1.0
 
             renpy.jump("player_turn")
 
@@ -126,6 +126,8 @@ init python:
             """
             End turn.
             """
+            self.attack_multiplier = 1.0
+
             renpy.jump("enemy_turn")
 
 default player = Player(

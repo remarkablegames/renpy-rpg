@@ -24,12 +24,12 @@ label shop:
 
             jump shop
 
-        "Learn “Enrage” (-$5)" if not player.has_skill("enrage") and money >= 5:
+        "Learn “Rage” (-$5)" if not player.has_skill("rage") and money >= 5:
             $ money -= 5
-            $ player.toggle_skill("enrage", True)
+            $ player.toggle_skill("rage", True)
             $ player.attack_min = player.attack_max
 
-            "You learned “Enrage”."
+            "You learned “Rage”."
 
             jump shop
 

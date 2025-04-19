@@ -27,7 +27,7 @@ label shop:
         "Learn “Enrage” (-$5)" if not player.has_skill("enrage") and money >= 5:
             $ money -= 5
             $ player.toggle_skill("enrage", True)
-            $ player.attack_max = player.attack_min
+            $ player.attack_min = player.attack_max
 
             "You learned “Enrage”."
 

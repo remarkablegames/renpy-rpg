@@ -34,7 +34,7 @@ init python:
                 ),
 
                 "rage": Skill(
-                    callback=self.action_enrage,
+                    callback=self.action_rage,
                     energy=1,
                     label_active="Attack {color=[colors.attack]}+100%{/color}, Energy [emojis.get(player.skills['rage'].energy)]",
                     label_disabled="{color=[gui.insensitive_color]}Attack +100%, Energy [player.skills['rage'].energy]",
@@ -73,7 +73,8 @@ init python:
             """
             Attack enemy.
             """
-            energy_cost = self.skills["attack"].energy
+            attack_skill = self.skills["attack"]
+            energy_cost = attack_skill.energy
 
             if self.energy < energy_cost:
                 narrator("You don’t have enough energy.")
@@ -82,6 +83,11 @@ init python:
                 enemy.health -= self.attack
                 renpy.show("placeholder boy", at_list=[shake])
                 narrator("You dealt [player.attack] damage to the enemy.")
+
+                if "stun" in attack_skill.tags and renpy.random.random() < 0.2:
+                    enemy.stunned = True
+                    renpy.show("placeholder boy", at_list=[shake])
+                    narrator("You stunned the enemy!")
 
             renpy.jump("player_turn")
 
@@ -108,11 +114,11 @@ init python:
             health_cost = self.health_max // 4
             self.health -= health_cost
             self.energy += 1
-            narrator(f"You gained 1 energy and lost {health_cost} health.")
+            narrator(f"You converted {health_cost} health to 1 energy.")
 
             renpy.jump("player_turn")
 
-        def action_enrage(self) -> None:
+        def action_rage(self) -> None:
             """
             Increase attack multiplier.
             """

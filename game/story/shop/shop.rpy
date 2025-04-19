@@ -4,7 +4,17 @@ init python:
 label shop:
 
     menu:
-        "Would you like to buy something from the shop?"
+        "What would you like to do?"
+
+        "Upgrade “Attack” to  “Heavy Attack” (-$5)" if player.has_skill("attack") and "stun" not in player.skills["attack"].tags and money >= 5:
+            $ money -= 5
+            $ player.skills["attack"].tags.append("stun")
+            $ player.skills["attack"].label_active = player.skills["attack"].label_active.replace("Attack", "Heavy Attack")
+            $ player.skills["attack"].label_disabled = player.skills["attack"].label_disabled.replace("Attack", "Heavy Attack")
+
+            "You upgraded “Attack” to “Heavy Attack”."
+
+            jump shop
 
         "Learn “Heal” (-$1)" if not player.has_skill("heal") and money >= 1:
             $ money -= 1

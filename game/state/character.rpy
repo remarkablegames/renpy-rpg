@@ -13,6 +13,8 @@ init python:
             self.heal_min = kwargs.get("heal_min", 0)
             self.heal_max = kwargs.get("heal_max", 0)
 
+            self.stunned = False
+
         def turn_rng(self) -> None:
             """
             Generate random numbers for turn.
@@ -33,5 +35,8 @@ init python:
             """
             Reset stats.
             """
+            self.attack_multiplier = 1.0
+            self.stunned = False
+
             if self.health > self.health_max:
                 self.health = self.health_max

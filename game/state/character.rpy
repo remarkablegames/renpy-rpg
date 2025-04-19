@@ -20,11 +20,11 @@ init python:
             self.attack = round(renpy.random.randint(self.attack_min, self.attack_max) * self.attack_multiplier)
             self.heal = renpy.random.randint(self.heal_min, self.heal_max)
 
-        def perform_heal(self) -> None:
+        def perform_heal(self, overheal=False) -> None:
             """
             Heal character.
             """
-            if self.health + self.heal >= self.health_max:
+            if not overheal and self.health + self.heal >= self.health_max:
                 self.health = self.health_max
             else:
                 self.health += self.heal
@@ -33,4 +33,5 @@ init python:
             """
             Reset stats.
             """
-            self.attack_multiplier = 1.0
+            if self.health > self.health_max:
+                self.health = self.health_max

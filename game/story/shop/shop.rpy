@@ -3,8 +3,6 @@ init python:
 
 label shop:
 
-    $ config.menu_include_disabled = True
-
     menu:
         "Would you like to buy something from the shop?"
 
@@ -13,6 +11,16 @@ label shop:
             $ player.toggle_skill("heal", True)
 
             "You learned “Heal”."
+
+            jump shop
+
+        "Upgrade “Heal” to “Overheal” (-$5)" if player.has_skill("heal") and "overheal" not in player.skills["heal"].tags and money >= 5:
+            $ money -= 5
+            $ player.skills["heal"].tags.append("overheal")
+            $ player.skills["heal"].label_active = player.skills["heal"].label_active.replace("Heal", "Overheal")
+            $ player.skills["heal"].label_disabled = player.skills["heal"].label_disabled.replace("Heal", "Overheal")
+
+            "You upgraded “Heal” to “Overheal”."
 
             jump shop
 
@@ -36,11 +44,8 @@ label shop:
         "Get a reward (-$[floor(wins * 1.5)])" if money >= floor(wins * 1.5):
             $ money -= floor(wins * 1.5)
             $ rewards += 1
-            $ config.menu_include_disabled = False
 
             jump reward
 
-        "Leave":
-            $ config.menu_include_disabled = False
-
+        "Battle":
             jump combat

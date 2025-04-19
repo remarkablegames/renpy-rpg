@@ -6,6 +6,7 @@ init python:
             self.energy = kwargs.get("energy", 0)
             self.callback = kwargs.get("callback")
             self.enabled = kwargs.get("enabled", False)
+            self.tags = kwargs.get("tags", [])
 
     class Player(RPGCharacter):
         def __init__(self, **kwargs) -> None:
@@ -73,6 +74,7 @@ init python:
             Attack enemy.
             """
             energy_cost = self.skills["attack"].energy
+
             if self.energy < energy_cost:
                 narrator("You don’t have enough energy.")
             else:
@@ -87,12 +89,14 @@ init python:
             """
             Heal player.
             """
-            energy_cost = self.skills["heal"].energy
+            heal_skill = self.skills["heal"]
+            energy_cost = heal_skill.energy
+
             if self.energy < energy_cost:
                 narrator("You don’t have enough energy.")
             else:
                 self.energy -= energy_cost
-                self.perform_heal()
+                self.perform_heal(overheal="overheal" in heal_skill.tags)
                 narrator("You healed [player.heal] health.")
 
             renpy.jump("player_turn")

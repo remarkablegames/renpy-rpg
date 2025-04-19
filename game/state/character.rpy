@@ -7,7 +7,7 @@ init python:
             self.attack = 0
             self.attack_min = kwargs.get("attack_min", 0)
             self.attack_max = kwargs.get("attack_max", 0)
-            self.attack_multiplier = kwargs.get("attack_multiplier", 1.0)
+            self.attack_multiplier = kwargs.get("attack_multiplier", 1)
 
             self.heal = 0
             self.heal_min = kwargs.get("heal_min", 0)
@@ -35,7 +35,7 @@ init python:
             """
             Reset stats.
             """
-            self.attack_multiplier = 1.0
+            self.attack_multiplier = 1
             self.stunned = False
 
             if self.health > self.health_max:

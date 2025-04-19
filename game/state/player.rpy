@@ -36,8 +36,8 @@ init python:
                 "rage": Skill(
                     callback=self.action_rage,
                     energy=1,
-                    label_active="Attack {color=[colors.attack]}+100%{/color}, Energy [emojis.get(player.skills['rage'].energy)]",
-                    label_disabled="{color=[gui.insensitive_color]}Attack +100%, Energy [player.skills['rage'].energy]",
+                    label_active="Attack {color=[colors.attack]}x2{/color}, Energy [emojis.get(player.skills['rage'].energy)]",
+                    label_disabled="{color=[gui.insensitive_color]}Attack x2, Energy [player.skills['rage'].energy]",
                 ),
             }
 
@@ -84,6 +84,9 @@ init python:
                 renpy.show("placeholder boy", at_list=[shake])
                 narrator("You dealt [player.attack] damage to the enemy.")
 
+                if enemy.health <= 0:
+                    renpy.jump("win")
+
                 if "stun" in attack_skill.tags and renpy.random.random() < 0.2:
                     enemy.stunned = True
                     renpy.show("placeholder boy", at_list=[shake])
@@ -114,7 +117,6 @@ init python:
             health_cost = self.health_max // 4
             self.health -= health_cost
             self.energy += 1
-            narrator(f"You converted {health_cost} health to 1 energy.")
 
             renpy.jump("player_turn")
 
@@ -128,7 +130,7 @@ init python:
                 narrator("You don’t have enough energy.")
             else:
                 self.energy -= energy_cost
-                self.attack_multiplier += 1.0
+                self.attack_multiplier *= 2
 
             renpy.jump("player_turn")
 
@@ -136,7 +138,7 @@ init python:
             """
             End turn.
             """
-            self.attack_multiplier = 1.0
+            self.attack_multiplier = 1
 
             renpy.jump("enemy_turn")
 

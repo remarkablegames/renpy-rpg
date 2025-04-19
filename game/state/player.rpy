@@ -86,17 +86,8 @@ init python:
             if self.energy < energy_cost:
                 narrator("You don’t have enough energy.")
             else:
-                self.energy -= energy_cost
-                enemy.health -= self.attack
-                renpy.show("placeholder boy", at_list=[shake])
-                narrator("You dealt [player.attack] damage to the enemy.")
-
-                if enemy.health > 0 and "stun" in attack_skill.tags and renpy.random.random() < 0.2:
-                    enemy.stunned = True
-                    renpy.show("placeholder boy", at_list=[shake])
-                    narrator("You stunned the enemy!")
-
-            renpy.jump("player_turn")
+                renpy.jump("select_enemy")
+                renpy.pause()
 
         def action_heal(self) -> None:
             """

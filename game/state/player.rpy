@@ -31,6 +31,7 @@ init python:
                 "life_force": Skill(
                     callback=self.action_life_force,
                     label_active="Energy {color=[colors.energy]}+1{/color}, Health {color=[colors.heal]}-[player.health_max // 4]",
+                    label_disabled="{color=[gui.insensitive_color]}Energy +1, Health -[player.health_max // 4]",
                 ),
 
                 "rage": Skill(
@@ -64,7 +65,13 @@ init python:
 
             for skill in self.skills.values():
                 if skill.enabled:
-                    skill_label = skill.label_disabled if self.energy < skill.energy else skill.label_active
+                    if skill.callback == self.action_life_force:
+                        skill_label = skill.label_active if self.health > self.health_max // 4 else skill.label_disabled
+                    elif self.energy >= skill.energy:
+                        skill_label = skill.label_active
+                    else:
+                        skill_label = skill.label_disabled
+
                     choices.append((skill_label, skill.callback))
 
             return choices + [("End Turn", self.end_turn)]
@@ -112,8 +119,12 @@ init python:
             Convert health to energy.
             """
             health_cost = self.health_max // 4
-            self.health -= health_cost
-            self.energy += 1
+
+            if self.health <= health_cost:
+                narrator("You don’t have enough health.")
+            else:
+                self.health -= health_cost
+                self.energy += 1
 
             renpy.jump("player_turn")
 

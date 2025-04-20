@@ -85,6 +85,7 @@ init python:
 
             if self.energy < energy_cost:
                 narrator("You don’t have enough energy.")
+                renpy.jump("player_turn")
             else:
                 renpy.jump("select_enemy")
                 renpy.pause()

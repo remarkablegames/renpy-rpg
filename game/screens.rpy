@@ -211,7 +211,18 @@ screen choice(items):
 
     vbox:
         for i in items:
-            textbutton i.caption action i.action
+            $ caption = i.caption.split("{tooltip}")
+            if len(caption) == 1:
+                textbutton i.caption action i.action
+            else:
+                textbutton caption[0]:
+                    action i.action
+                    tooltip caption[1]
+
+    $ tooltip = GetTooltip()
+
+    if tooltip:
+        text "[tooltip]"
 
 
 style choice_vbox is vbox

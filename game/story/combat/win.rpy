@@ -10,6 +10,8 @@ default wins = 0
 label win:
 
     hide placeholder boy with dissolve
+    hide screen player_stats
+    hide screen enemy_stats
 
     "You defeated the enemy!"
 

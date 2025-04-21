@@ -17,6 +17,6 @@ screen player_stats():
 
 screen enemy_stats():
     frame:
-        xalign 1.0
+        xalign 0.5
         vbox:
             use stat("Health", enemy.health, enemy.health_max)

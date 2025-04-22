@@ -15,8 +15,14 @@ screen player_stats():
             null height 15
             text "Money: $[money]"
 
-screen enemy_stats():
+screen enemy_stats0(enemy, xalign_position = 0.5):
     frame:
-        xalign 0.5
+        xalign xalign_position
+        vbox:
+            use stat("Health", enemy.health, enemy.health_max)
+
+screen enemy_stats1(enemy, xalign_position = 0.5):
+    frame:
+        xalign xalign_position
         vbox:
             use stat("Health", enemy.health, enemy.health_max)

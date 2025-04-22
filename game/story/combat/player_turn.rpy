@@ -1,6 +1,6 @@
 label player_turn:
 
-    if enemy.health <= 0:
+    if enemies.dead():
         jump win
 
     if player.health <= 0:

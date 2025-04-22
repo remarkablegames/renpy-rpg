@@ -1,1 +1,0 @@
-default enemy = RPGCharacter()

@@ -50,7 +50,7 @@ init python:
 
         def display_menu(self) -> None:
             """
-            Display menu.
+            Display menu for player.
             """
             narrator("Choose your action.", interact=False)
             action = renpy.display_menu(self.get_menu_choices())
@@ -58,7 +58,7 @@ init python:
 
         def get_menu_choices(self) -> list:
             """
-            Get display menu choices.
+            Get display menu choices for player.
             """
             self.turn_rng()
             choices = []
@@ -78,7 +78,7 @@ init python:
 
         def action_attack(self) -> None:
             """
-            Attack enemy.
+            Player attack enemy.
             """
             attack_skill = self.skills["attack"]
             energy_cost = attack_skill.energy
@@ -87,7 +87,7 @@ init python:
                 narrator("You don’t have enough energy.")
                 renpy.jump("player_turn")
             else:
-                renpy.jump("select_enemy")
+                renpy.jump("player_attack")
                 renpy.pause()
 
         def action_heal(self) -> None:
@@ -108,7 +108,7 @@ init python:
 
         def action_life_force(self) -> None:
             """
-            Convert health to energy.
+            Player convert health to energy.
             """
             health_cost = self.health_max // 4
 
@@ -122,7 +122,7 @@ init python:
 
         def action_rage(self) -> None:
             """
-            Increase attack multiplier.
+            Player increase attack multiplier.
             """
             energy_cost = self.skills["attack"].energy
 
@@ -136,7 +136,7 @@ init python:
 
         def end_turn(self) -> None:
             """
-            End turn.
+            Player end turn.
             """
             self.attack_multiplier = 1
 

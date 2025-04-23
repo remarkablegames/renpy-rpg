@@ -1,6 +1,9 @@
 init python:
     class RPGCharacter():
         def __init__(self, **kwargs) -> None:
+            self.image = kwargs.get("image")
+            self.name = kwargs.get("name")
+
             self.health = self.health_max = kwargs.get("health", 0)
             self.energy = self.energy_max = kwargs.get("energy", 0)
 

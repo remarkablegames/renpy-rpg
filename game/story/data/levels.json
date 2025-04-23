@@ -1,0 +1,15 @@
+{
+    "0": {
+        "enemies": [
+            {
+                "name": "Enemy",
+                "image": "boy",
+                "health": 10,
+                "attack_min": 1,
+                "attack_max": 2,
+                "heal_min": 1,
+                "heal_max": 2
+            }
+        ]
+    }
+}

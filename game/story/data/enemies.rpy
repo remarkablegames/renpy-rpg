@@ -4,35 +4,23 @@ init python:
             self.enemies = []
             self.count = 0
 
-        def generate(self, count: int = 1) -> None:
+        def generate(self) -> None:
             """
             Generate enemies.
             """
+            enemies = levels.get(wins)["enemies"]
+
             self.enemies = []
-            self.count = count
+            self.count = len(enemies)
 
-            while count > 0:
-                enemy = RPGCharacter()
-                enemy.image = "girl" if count > 1 else "boy"
-                enemy.name = enemy.image.capitalize()
+            for enemy in enemies:
+                self.enemies.append(RPGCharacter(**enemy))
 
-                enemy.health = enemy.health_max = round(5 * (wins + 1) * (1 + renpy.random.random()))
-
-                enemy.attack_min = round(wins * (1 + renpy.random.random())) + 1
-                enemy.attack_max = enemy.attack_min + wins + 1
-
-                enemy.heal_min = round(wins * (1 + renpy.random.random())) + 1
-                enemy.heal_max = enemy.heal_min + wins + 1
-
-                self.enemies.append(enemy)
-
-                count -= 1
-
-        def show(self, count: int = 1) -> None:
+        def show(self) -> None:
             """
             Show enemies.
             """
-            self.generate(count)
+            self.generate()
 
             for enemy_index, enemy in enumerate(self.enemies):
                 xalign_position = self.xalign_position(enemy)

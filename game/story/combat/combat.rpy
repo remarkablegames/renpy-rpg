@@ -4,11 +4,7 @@ label combat:
 
     show screen player_stats
 
+    $ enemies.show()
     $ player.energy = player.energy_max
-
-    if wins < 3:
-        $ enemies.show()
-    else:
-        $ enemies.show(2)
 
     jump player_turn

@@ -9,7 +9,7 @@ default wins = 0
 
 label win:
 
-    "You defeated the enemy!"
+    "You won the battle!"
 
     $ player.reset()
     $ wins += 1

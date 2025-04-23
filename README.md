@@ -8,7 +8,7 @@
 [![build](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/build.yml)
 [![lint](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/lint.yml/badge.svg)](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/lint.yml)
 
-Ren'Py roguelike demo.
+Ren'Py Roguelike Template.
 
 Play the game on:
 

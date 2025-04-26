@@ -17,9 +17,9 @@ init python:
                 enemies_copy = ENEMIES.copy()
                 random = renpy.random.random()
 
-                if random < 0.3:
+                if wins > 6 and random < 0.3:
                     enemies_count = 3
-                elif random < 0.6:
+                elif wins > 3 and random < 0.6:
                     enemies_count = 2
                 else:
                     enemies_count = 1

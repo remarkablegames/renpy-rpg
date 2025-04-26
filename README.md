@@ -22,7 +22,13 @@ Play the game on:
 
 ### Audio
 
+### Audio
+
+- [Heal Up](https://pixabay.com/sound-effects/heal-up-39285/)
+- [Health Pickup](https://pixabay.com/sound-effects/health-pickup-6860/)
+- [Heartbeat 01 - BRVHRTZ](https://pixabay.com/sound-effects/heartbeat-01-brvhrtz-225058/)
 - [Kenney Interface Sounds](https://kenney.nl/assets/interface-sounds)
+- [Punch Sound Effects](https://pixabay.com/sound-effects/punch-sound-effects-28649/)
 
 ## Prerequisites
 

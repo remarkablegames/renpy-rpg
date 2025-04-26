@@ -24,7 +24,7 @@ label player_attack_end(enemy = None, enemy_index = 0):
         jump player_turn
 
     $ player.energy -= player.skills["attack"].energy
-    $ enemy.health -= player.attack
+    $ player.perform_attack(enemy)
     $ renpy.show(enemy.image, at_list=[shake])
 
     "You dealt [player.attack] damage to [enemy.name]."

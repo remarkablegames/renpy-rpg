@@ -75,7 +75,7 @@ init python:
                 else:
                     narrator(f"{enemy.name} dealt {enemy.attack} damage to you.")
                     renpy.with_statement(vpunch)
-                    player.health -= enemy.attack
+                    enemy.perform_attack(player)
 
                     if player.health <= 0:
                         renpy.jump("lose")

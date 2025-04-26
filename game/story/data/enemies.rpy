@@ -46,12 +46,18 @@ init python:
             count = self.count
             index = self.enemies.index(enemy)
 
-            if index == 0 and count == 2:
-                xalign_position = 0.25
-            elif index == 1 and count == 2:
-                xalign_position = 0.75
-            else:
-                xalign_position = 0.5
+            xalign_position = 0.5
+
+            if count == 2:
+                if index == 0:
+                    xalign_position = 0.25
+                elif index == 1:
+                    xalign_position = 0.75
+            elif count == 3:
+                if index == 0:
+                    xalign_position = 0.1
+                elif index == 2:
+                    xalign_position = 0.9
 
             return xalign_position
 
@@ -69,7 +75,7 @@ init python:
 
                 enemy.turn_rng()
 
-                if enemy.health < enemy.health_max and renpy.random.random() < 0.5:
+                if enemy.heal and enemy.health < enemy.health_max and renpy.random.random() < 0.5:
                     narrator(f"{enemy.name} healed {enemy.heal} health.")
                     enemy.perform_heal()
                 else:

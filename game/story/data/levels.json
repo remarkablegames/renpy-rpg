@@ -2,8 +2,7 @@
     "0": {
         "enemies": [
             {
-                "name": "Enemy",
-                "image": "boy",
+                "name": "Boy",
                 "health": 10,
                 "attack_min": 1,
                 "attack_max": 2,

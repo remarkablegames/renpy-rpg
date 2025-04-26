@@ -7,10 +7,10 @@ label reward:
     $ reward_heal = renpy.random.randint(1, 3 + wins // 2)
 
     menu:
-        "Choose your reward (remaining: [rewards])."
+        "Claim your reward (remaining: [rewards])."
 
-        "Reroll rewards (-$[wins])" if money >= wins:
-            $ money -= wins
+        "Reroll rewards (-$[wins // 2])" if money >= wins // 2 and wins > 1:
+            $ money -= wins // 2
 
             jump reward
 
@@ -29,7 +29,7 @@ label reward:
         "Decrease energy of heal by {color=[colors.energy]}1" if renpy.random.random() < 0.3 and player.has_skill("heal") and player.skills["heal"].energy > 1:
             $ player.skills["heal"].energy -= 1
 
-        "Increase max energy by {color=[colors.energy]}+1" if wins > 3 and renpy.random.random() < 0.1:
+        "Increase max energy by {color=[colors.energy]}+1" if renpy.random.random() < 0.1:
             $ player.energy_max += 1
 
         "Recover all health" if player.health < player.health_max:

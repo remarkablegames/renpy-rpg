@@ -21,7 +21,7 @@ label player_attack_end(enemy = None, enemy_index = 0):
     hide screen select_enemy
 
     if not enemy:
-        jump player_turn
+        jump player_turn_menu
 
     $ player.energy -= player.skills["attack"].energy
     $ player.perform_attack(enemy)

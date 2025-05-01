@@ -60,7 +60,6 @@ init python:
             """
             Get display menu choices for player.
             """
-            self.turn_rng()
             choices = []
 
             for skill in self.skills.values():

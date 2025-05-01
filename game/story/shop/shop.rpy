@@ -23,7 +23,7 @@ label shop:
             jump shop
 
         "[has_overheal]Upgrade “Heal” to “Overheal” (-$5)
-        {tooltip}Heal beyond max health" if not has_overheal and money >= 5:
+        {tooltip}Heal beyond max health" if has_heal and not has_overheal and money >= 5:
             $ money -= 5
             $ player.skills["heal"].tags.append("overheal")
             $ player.skills["heal"].label_active = player.skills["heal"].label_active.replace("Heal", "Overheal")

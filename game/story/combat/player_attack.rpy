@@ -1,4 +1,7 @@
 screen select_enemy():
+    if not wins:
+        text "Select enemy:"
+
     for enemy_index, enemy in enumerate(enemies.enemies):
         if enemy.health > 0:
             imagebutton:

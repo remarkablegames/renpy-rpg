@@ -87,7 +87,6 @@ init python:
                 renpy.jump("player_turn")
             else:
                 renpy.jump("player_attack")
-                renpy.pause()
 
         def action_heal(self) -> None:
             """

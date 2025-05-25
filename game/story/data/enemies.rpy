@@ -61,6 +61,24 @@ init python:
 
             return xalign_position
 
+        def count_alive(self) -> int:
+            """
+            Get alive enemies.
+            """
+            count = 0
+            for enemy in self.enemies:
+                if enemy.health > 0:
+                    count += 1
+            return count
+
+        def get_alive(self) -> RPGCharacter:
+            """
+            Get alive enemy.
+            """
+            for enemy in self.enemies:
+                if enemy.health > 0:
+                    return enemy
+
         def turn(self) -> None:
             """
             Enemy turn.

@@ -8,7 +8,7 @@
 [![build](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/build.yml)
 [![lint](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/lint.yml/badge.svg)](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/lint.yml)
 
-Ren'Py Roguelike Template.
+⚔️ Ren'Py Roguelike Template.
 
 Play the game on:
 
@@ -44,6 +44,12 @@ Symlink `renpy`:
 sudo ln -sf "$(realpath renpy-sdk/renpy.sh)" /usr/local/bin/renpy
 ```
 
+Check the version:
+
+```sh
+renpy --version
+```
+
 ## Install
 
 Clone the repository to the `Projects Directory`:
@@ -52,6 +58,22 @@ Clone the repository to the `Projects Directory`:
 git clone https://github.com/remarkablegames/renpy-roguelike.git
 cd renpy-roguelike
 ```
+
+Rename the project:
+
+```sh
+git grep -l 'Renpy Roguelike' | xargs sed -i '' -e 's/Renpy Roguelike/My Game/g'
+```
+
+```sh
+git grep -l 'renpy-roguelike' | xargs sed -i '' -e 's/renpy-roguelike/my-game/g'
+```
+
+Replace the assets:
+
+- [ ] `web-presplash.jpg`
+- [ ] `game/gui/main_menu.png`
+- [ ] `game/gui/window_icon.png`
 
 ## Run
 
@@ -69,12 +91,20 @@ renpy
 
 Press `Shift`+`R` to reload the game.
 
-Press `Shift`+`D` to display the developer menu.
+Press `Shift`+`D` to open the developer menu.
 
-Clean the cache:
+## Cache
+
+Clear the cache:
 
 ```sh
 find game -name "*.rpyc" -delete
+```
+
+Or open `Ren'Py Launcher` > `Force Recompile`:
+
+```sh
+renpy
 ```
 
 ## Lint

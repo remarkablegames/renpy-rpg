@@ -62,7 +62,7 @@ cd renpy-roguelike
 Rename the project:
 
 ```sh
-git grep -l 'Renpy Roguelike' | xargs sed -i '' -e 's/Renpy Roguelike/My Game/g'
+git grep -l "Ren'Py Roguelike" | xargs sed -i '' -e "s/Ren'Py Roguelike/My Game/g"
 ```
 
 ```sh

@@ -1,18 +1,18 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/remarkablegames/renpy-roguelike/master/game/gui/window_icon.png" alt="Ren'Py Roguelike">
+  <img src="https://raw.githubusercontent.com/remarkablegames/renpy-rpg/master/game/gui/window_icon.png" alt="Ren'Py RPG">
 </p>
 
-# Ren'Py Roguelike
+# Ren'Py RPG
 
-![release](https://img.shields.io/github/v/release/remarkablegames/renpy-roguelike)
-[![build](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/build.yml)
-[![lint](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/lint.yml/badge.svg)](https://github.com/remarkablegames/renpy-roguelike/actions/workflows/lint.yml)
+![release](https://img.shields.io/github/v/release/remarkablegames/renpy-rpg)
+[![build](https://github.com/remarkablegames/renpy-rpg/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/renpy-rpg/actions/workflows/build.yml)
+[![lint](https://github.com/remarkablegames/renpy-rpg/actions/workflows/lint.yml/badge.svg)](https://github.com/remarkablegames/renpy-rpg/actions/workflows/lint.yml)
 
-⚔️ Ren'Py Roguelike Template.
+⚔️ Ren'Py RPG Template.
 
 Play the game on:
 
-- [remarkablegames](https://remarkablegames.org/renpy-roguelike)
+- [remarkablegames](https://remarkablegames.org/renpy-rpg)
 
 ## Credits
 
@@ -55,18 +55,18 @@ renpy --version
 Clone the repository to the `Projects Directory`:
 
 ```sh
-git clone https://github.com/remarkablegames/renpy-roguelike.git
-cd renpy-roguelike
+git clone https://github.com/remarkablegames/renpy-rpg.git
+cd renpy-rpg
 ```
 
 Rename the project:
 
 ```sh
-git grep -l "Ren'Py Roguelike" | xargs sed -i '' -e "s/Ren'Py Roguelike/My Game/g"
+git grep -l "Ren'Py RPG" | xargs sed -i '' -e "s/Ren'Py RPG/My Game/g"
 ```
 
 ```sh
-git grep -l 'renpy-roguelike' | xargs sed -i '' -e 's/renpy-roguelike/my-game/g'
+git grep -l 'renpy-rpg' | xargs sed -i '' -e 's/renpy-rpg/my-game/g'
 ```
 
 Replace the assets:

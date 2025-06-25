@@ -1,3 +1,3 @@
 label start:
 
-    jump combat
+    jump battle

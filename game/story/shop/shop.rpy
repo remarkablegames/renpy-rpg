@@ -74,4 +74,4 @@ label shop:
         "Battle":
             $ config.menu_include_disabled = False
 
-            jump combat
+            jump battle

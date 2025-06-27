@@ -1,4 +1,4 @@
-screen select_enemy():
+screen select_enemy:
     text "Select enemy:"
 
     for enemy_index, enemy in enumerate(enemies.enemies):

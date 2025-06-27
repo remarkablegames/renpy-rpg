@@ -4,7 +4,7 @@ screen stat(name, current, max):
         xalign 0.5
         xsize 300
 
-screen player_stats():
+screen player_stats:
     zorder 1
     frame:
         yalign 1.0

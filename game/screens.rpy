@@ -223,7 +223,13 @@ screen choice(items):
     $ tooltip = GetTooltip()
 
     if tooltip:
-        text "[tooltip]"
+        # Position the tooltip relative to the captured focus
+        nearrect:
+            focus "tooltip"
+            prefer_top True
+            frame:
+                background "#000"
+                text tooltip color "#fff"
 
 
 style choice_vbox is vbox

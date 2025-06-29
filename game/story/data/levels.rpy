@@ -1,9 +1,9 @@
 init python:
-    import json
+    from json import load
 
     class Levels:
         def __init__(self) -> None:
-            self.levels = json.load(renpy.file("story/data/levels.json"))
+            self.levels = load(renpy.file("story/data/levels.json"))
 
         def get(self, level: int) -> dict:
             """

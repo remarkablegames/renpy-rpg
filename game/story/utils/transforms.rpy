@@ -2,7 +2,7 @@ transform position(xalign_position = 0.5, yalign_position = 1.0):
     xalign xalign_position
     yalign yalign_position
 
-transform shake():
+transform shake:
     ease .06 yoffset 24
     ease .06 yoffset -24
     ease .05 yoffset 20

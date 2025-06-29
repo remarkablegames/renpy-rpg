@@ -7,7 +7,7 @@ label reward:
     $ reward_heal = renpy.random.randint(1, 3 + wins // 2)
 
     menu:
-        "Claim your reward (remaining: [rewards])."
+        "Claim your reward (remaining: [rewards]):"
 
         "Reroll rewards (-$[wins // 2])" if money >= wins // 2 and wins > 1:
             $ money -= wins // 2
@@ -34,6 +34,9 @@ label reward:
 
         "Recover all health" if player.health < player.health_max:
             $ player.health = player.health_max
+
+        "Pass":
+            pass
 
     $ rewards -= 1
 

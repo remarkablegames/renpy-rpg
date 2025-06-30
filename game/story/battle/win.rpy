@@ -9,6 +9,10 @@ default wins = 0
 
 label win:
 
+    hide screen enemy_stats0
+    hide screen enemy_stats1
+    hide screen enemy_stats2
+
     "You won the battle!"
 
     $ player.reset()

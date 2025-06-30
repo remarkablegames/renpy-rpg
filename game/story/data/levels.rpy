@@ -14,7 +14,7 @@ init python:
 
             except KeyError:
                 level = { "enemies": [] }
-                enemies_copy = ENEMIES.copy()
+                enemies_copy = Enemies.NAMES.copy()
                 random = renpy.random.random()
 
                 if wins > 6 and random < 0.3:

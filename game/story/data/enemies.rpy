@@ -1,5 +1,9 @@
 init python:
     class Enemies:
+        # Names that are mapped to their respective images.
+        # E.g., name "Boy 1" -> image "boy_1".
+        NAMES = ["Boy", "Girl", "Guy"]
+
         def __init__(self) -> None:
             self.enemies = []
             self.count = 0
@@ -22,22 +26,24 @@ init python:
             """
             self.generate()
 
-            for enemy_index, enemy in enumerate(self.enemies):
+            for index, enemy in enumerate(self.enemies):
                 xalign_position = self.xalign_position(enemy)
-                renpy.show_screen(f"enemy_stats{enemy_index}", enemy, xalign_position)
+                renpy.show_screen(f"enemy_stats{index}", enemy, xalign_position)
                 renpy.show(enemy.image, at_list=[position(xalign_position)])
 
             renpy.with_statement(dissolve)
+
+        def alive(self) -> list:
+            """
+            Get alive enemies.
+            """
+            return list(filter(lambda enemy: enemy.health > 0, self.enemies))
 
         def dead(self) -> bool:
             """
             Whether enemies are dead.
             """
-            for enemy in self.enemies:
-                if enemy.health > 0:
-                    return False
-
-            return True
+            return not bool(len(self.alive()))
 
         def xalign_position(self, enemy: RPGCharacter) -> float:
             """
@@ -60,24 +66,6 @@ init python:
                     xalign_position = 0.9
 
             return xalign_position
-
-        def count_alive(self) -> int:
-            """
-            Get alive enemies.
-            """
-            count = 0
-            for enemy in self.enemies:
-                if enemy.health > 0:
-                    count += 1
-            return count
-
-        def get_alive(self) -> RPGCharacter:
-            """
-            Get alive enemy.
-            """
-            for enemy in self.enemies:
-                if enemy.health > 0:
-                    return enemy
 
         def turn(self) -> None:
             """

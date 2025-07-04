@@ -10,9 +10,9 @@ screen player_stats:
         yalign 1.0
         vbox:
             use stat("Health", player.health, player.health_max)
-            null height 10
+            null height 15
             use stat("Energy", player.energy, player.energy_max)
-            null height 10
+            null height 15
             text "Money: $[money]"
 
 screen enemy_stats0(enemy, xalign_position=0.5):

@@ -17,6 +17,15 @@ jobs:
         with:
           web: true
 
+      - name: Delete unnecessary files
+        run: >
+          find .
+          ! -name 'progressive_download.txt'
+          ! -name 'web-presplash.jpg'
+          ! -path "*/.*"
+          ! -path "*game*"
+          -delete
+
       - name: Build web
         run: |
           renpy-launcher web_build . --destination web

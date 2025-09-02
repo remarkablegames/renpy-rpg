@@ -58,7 +58,7 @@ jobs:
           cp web-presplash.jpg ../dists/web/web-presplash.jpg
 
       - name: Setup butler
-        uses: remarkablegames/setup-butler@v1
+        uses: remarkablegames/setup-butler@v2
 
       # https://www.renpy.org/doc/html/build.html#var-build.itch_channels
       - name: Upload to itch.io

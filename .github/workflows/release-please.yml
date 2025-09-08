@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Setup Ren'Py
-        uses: remarkablegames/setup-renpy@v1
+        uses: remarkablegames/setup-renpy@v2
         with:
           web: true
 

@@ -20,27 +20,31 @@ jobs:
       - name: Delete unnecessary files
         run: >
           find .
-          ! -name 'progressive_download.txt'
-          ! -name 'web-presplash.jpg'
+          ! -name "icon.*"
+          ! -name "progressive_download.txt"
+          ! -name "web-*"
           ! -path "*/.*"
           ! -path "*game*"
           -delete
 
       - name: Build web
-        run: |
-          renpy-launcher web_build . --destination web
-          cp web-presplash.jpg web/web-presplash.jpg
+        run: renpy-launcher web_build . --destination web
 
-      - name: Deploy
+      - name: Update presplash image
+        run: |
+          rm web/web-presplash.jpg
+          mv web-presplash.webp web
+          grep -lr web-presplash.jpg web | xargs sed -i 's/web-presplash.jpg/web-presplash.webp/g'
+
+      - name: Deploy site
         if: github.ref_name == 'master'
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: remarkablemark/gitploy-action@v1
         with:
-          branch: gh-pages
-          folder: web
+          directory: web
 
       - name: Upload artifacts
         if: github.ref_name == 'master'
         uses: actions/upload-artifact@v4
         with:
-          name: web_build
+          name: web
           path: web

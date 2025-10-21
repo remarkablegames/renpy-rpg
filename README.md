@@ -14,6 +14,11 @@ Play the game on:
 
 - [remarkablegames](https://remarkablegames.org/renpy-rpg)
 
+Or download:
+
+- [Mac](https://github.com/remarkablegames/renpy-rpg/releases/latest/download/mac.zip)
+- [Windows](https://github.com/remarkablegames/renpy-rpg/releases/latest/download/pc.zip)
+
 ## Credits
 
 ### Art
@@ -70,9 +75,12 @@ git grep -l 'renpy-rpg' | xargs sed -i '' -e 's/renpy-rpg/my-game/g'
 
 Replace the assets:
 
-- [ ] `web-presplash.jpg`
 - [ ] `game/gui/main_menu.png`
 - [ ] `game/gui/window_icon.png`
+- [ ] [`icon.icns`](https://anyconv.com/png-to-icns-converter/)
+- [ ] [`icon.ico`](https://anyconv.com/png-to-ico-converter/)
+- [ ] `web-icon.png`
+- [ ] `web-presplash.webp`
 
 ## Run
 

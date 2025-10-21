@@ -37,9 +37,10 @@ jobs:
       - name: Delete unnecessary files
         run: >
           find .
-          ! -name 'progressive_download.txt'
-          ! -name 'version.txt'
-          ! -name 'web-presplash.jpg'
+          ! -name "icon.*"
+          ! -name "progressive_download.txt"
+          ! -name "version.txt"
+          ! -name "web-*"
           ! -path "*/.*"
           ! -path "*game*"
           -delete
@@ -55,7 +56,9 @@ jobs:
       - name: Build web
         run: |
           renpy-launcher web_build . --destination ../dists/web
-          cp web-presplash.jpg ../dists/web/web-presplash.jpg
+          rm ../dists/web/web-presplash.jpg
+          mv web-presplash.webp ../dists/web
+          grep -lr web-presplash.jpg ../dists/web | xargs sed -i 's/web-presplash.jpg/web-presplash.webp/g'
 
       - name: Setup butler
         uses: remarkablegames/setup-butler@v2
@@ -74,4 +77,4 @@ jobs:
       - name: Upload Release Artifact
         run: gh release upload ${{ needs.release.outputs.tag_name }} $(ls ../dists/*.zip)
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}

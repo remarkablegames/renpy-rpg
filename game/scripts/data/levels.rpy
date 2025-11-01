@@ -3,7 +3,7 @@ init python:
 
     class Levels:
         def __init__(self) -> None:
-            self.levels = load(renpy.file("story/data/levels.json"))
+            self.levels = load(renpy.file("scripts/data/levels.json"))
 
         def get(self, level: int) -> dict:
             """

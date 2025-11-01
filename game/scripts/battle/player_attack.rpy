@@ -1,4 +1,4 @@
-screen select_enemy:
+screen select_enemy():
     text "Select enemy:"
 
     for enemy in enemies.enemies:
@@ -9,6 +9,7 @@ screen select_enemy:
                 hover f"enemies/{enemy.image} hover.png"
                 at position(enemies.xalign_position(enemy))
                 action Call("player_attack_end", enemy)
+
 
 label player_attack:
 
@@ -21,6 +22,7 @@ label player_attack:
 
     show screen select_enemy
     pause
+
 
 label player_attack_end(enemy=None):
 

@@ -4,7 +4,8 @@ screen stat(name, current, max):
         xalign 0.5
         xsize 300
 
-screen player_stats:
+
+screen player_stats():
     zorder 1
     frame:
         yalign 1.0
@@ -15,17 +16,20 @@ screen player_stats:
             null height 15
             text "Money: $[money]"
 
+
 screen enemy_stats0(enemy, xalign_position=0.5):
     frame:
         xalign xalign_position
         vbox:
             use stat("Health", enemy.health, enemy.health_max)
 
+
 screen enemy_stats1(enemy, xalign_position=0.5):
     frame:
         xalign xalign_position
         vbox:
             use stat("Health", enemy.health, enemy.health_max)
+
 
 screen enemy_stats2(enemy, xalign_position=0.5):
     frame:

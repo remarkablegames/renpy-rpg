@@ -4,7 +4,7 @@
 
 # Ren'Py RPG
 
-![release](https://img.shields.io/github/v/release/remarkablegames/renpy-rpg)
+[![release](https://img.shields.io/github/v/release/remarkablegames/renpy-rpg)](https://github.com/remarkablegames/renpy-rpg/releases)
 [![build](https://github.com/remarkablegames/renpy-rpg/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/renpy-rpg/actions/workflows/build.yml)
 [![lint](https://github.com/remarkablegames/renpy-rpg/actions/workflows/lint.yml/badge.svg)](https://github.com/remarkablegames/renpy-rpg/actions/workflows/lint.yml)
 

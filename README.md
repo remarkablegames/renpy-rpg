@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/remarkablegames/renpy-rpg/master/game/gui/window_icon.png" alt="Ren'Py RPG">
+  <img src="web-icon.png" width="250" alt="Ren'Py RPG">
 </p>
 
 # Ren'Py RPG

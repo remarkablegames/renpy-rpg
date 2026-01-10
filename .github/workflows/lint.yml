@@ -15,8 +15,4 @@ jobs:
         uses: remarkablegames/setup-renpy@v2
 
       - name: Lint script
-        run: |
-          renpy-cli game lint
-          if (( $(renpy-cli game lint | wc -l) > 13 )); then
-            exit 1
-          fi
+        run: renpy-cli game lint --error-code

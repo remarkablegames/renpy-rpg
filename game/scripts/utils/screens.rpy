@@ -17,6 +17,19 @@ screen player_stats():
             text "Money: $[money]"
 
 
+screen tooltip():
+    $ tooltip = GetTooltip()
+    if tooltip:
+        # Position the tooltip relative to the captured focus
+        nearrect:
+            focus "tooltip"
+            prefer_top True
+            frame:
+                background Solid((255, 255, 255, 225))
+                text tooltip color "#000"
+                xalign 0.5
+
+
 screen enemy_stats0(enemy, xalign_position=0.5):
     frame:
         xalign xalign_position

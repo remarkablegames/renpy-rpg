@@ -218,17 +218,7 @@ screen choice(items):
                 textbutton caption[0]:
                     action i.action
                     tooltip caption[1]
-
-    $ tooltip = GetTooltip()
-
-    if tooltip:
-        # Position the tooltip relative to the captured focus
-        nearrect:
-            focus "tooltip"
-            prefer_top True
-            frame:
-                background "#000"
-                text tooltip color "#fff"
+    use tooltip
 
 
 style choice_vbox is vbox

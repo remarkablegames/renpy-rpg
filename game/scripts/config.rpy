@@ -3,10 +3,10 @@ define config.rollback_enabled = False
 
 
 init python:
-    def tooltip_custom_text_tag(tag, argument):
+    def tooltip_tag(tag, argument, contents):
         return [(renpy.TEXT_TAG, "tooltip")]
 
-    config.custom_text_tags["tooltip"] = tooltip_custom_text_tag
+    config.custom_text_tags["tooltip"] = tooltip_tag
 
 
 # To customize enemies: `game/scripts/data/enemies.json`

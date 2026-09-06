@@ -20,7 +20,7 @@ jobs:
         uses: googleapis/release-please-action@v5
         id: release
 
-  deploy:
+  itch:
     needs: release
     runs-on: ubuntu-latest
     if: ${{ needs.release.outputs.release_created }}
@@ -36,22 +36,24 @@ jobs:
 
       - name: Delete unnecessary files
         run: >
-          find .
-          ! -name "icon.*"
-          ! -name "progressive_download.txt"
-          ! -name "version.txt"
-          ! -name "web-*"
-          ! -path "*/.*"
-          ! -path "*game*"
+          find . -type f
+          ! -name 'icon.*'
+          ! -name 'progressive_download.txt'
+          ! -name 'version.txt'
+          ! -name 'web-*'
+          ! -path '*/.*'
+          ! -path './game/*'
           -delete
 
       - name: Build packages
         run: renpy-launcher distribute . --dest ../dists
 
+      # e.g., "../dists/renpy-template-1.2.3-linux.tar.bz2" -> "../dists/linux.tar.bz2"
       - name: Rename packages
         run: |
-          # e.g., "../dists/renpy-rpg-1.2.3-linux.tar.bz2" -> "../dists/linux.tar.bz2"
-          for filename in ../dists/*; do mv "$filename" "../dists/${filename##*-}"; done
+          for filename in ../dists/*; do
+            mv -- "$filename" "../dists/${filename##*-}"
+          done
 
       - name: Build web
         run: renpy-launcher web_build . --destination ../dists/web
@@ -71,6 +73,45 @@ jobs:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
 
       - name: Upload Release Artifact
-        run: gh release upload ${{ needs.release.outputs.tag_name }} $(ls ../dists/*.zip)
+        run: >
+          gh release upload
+          ${{ needs.release.outputs.tag_name }}
+          ../dists/*.zip
+          ../dists/*.tar.bz2
         env:
           GH_TOKEN: ${{ github.token }}
+
+  wavedash:
+    needs: release
+    runs-on: ubuntu-latest
+    if: ${{ needs.release.outputs.release_created }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Ren'Py
+        uses: remarkablegames/setup-renpy@v2
+        with:
+          web: true
+
+      - name: Delete unnecessary files
+        run: >
+          find . -type f
+          ! -name 'icon.*'
+          ! -name 'progressive_download.txt'
+          ! -name 'version.txt'
+          ! -name 'web-*'
+          ! -path '*/.*'
+          ! -path './game/*'
+          -delete
+
+      - name: Build web
+        run: renpy-launcher web_build . --destination dist
+
+      - name: Upload to Wavedash
+        uses: remarkablegames/wavedash-action@v1
+        with:
+          token: ${{ secrets.WAVEDASH_TOKEN }}
+          game-id: ${{ secrets.WAVEDASH_GAME_ID }}
+          build-message: ${{ needs.release.outputs.tag_name }}

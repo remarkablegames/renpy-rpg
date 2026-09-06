@@ -10,11 +10,11 @@
 
 ⚔️ Ren'Py RPG Template.
 
-Play the game:
+Play in your browser:
 
 - [remarkablegames](https://remarkablegames.org/renpy-rpg/)
 
-Or download:
+Or download for desktop:
 
 - [Windows](https://github.com/remarkablegames/renpy-rpg/releases/latest/download/win.zip)
 - [Mac](https://github.com/remarkablegames/renpy-rpg/releases/latest/download/mac.zip)

@@ -18,7 +18,7 @@ Or download for desktop:
 
 - [Windows](https://github.com/remarkablegames/renpy-rpg/releases/latest/download/win.zip)
 - [Mac](https://github.com/remarkablegames/renpy-rpg/releases/latest/download/mac.zip)
-- [Linux](https://github.com/remarkablegames/renpy-rpg/releases/latest/download/pc.zip)
+- [Linux](https://github.com/remarkablegames/renpy-rpg/releases/latest/download/linux.tar.bz2)
 
 ## Credits
 

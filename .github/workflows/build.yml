@@ -45,6 +45,12 @@ jobs:
           start: python -m http.server --directory web
           wait-on: http://localhost:8000
 
+      - name: Google Analytics
+        uses: remarkablemark/google-analytics-action@v1
+        with:
+          html-path: web/index.html
+          measurement-id: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+
       - name: Deploy site
         if: github.event_name != 'workflow_dispatch' && github.ref_name == 'master'
         uses: remarkablemark/gitploy-action@v1

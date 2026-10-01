@@ -23,12 +23,11 @@ jobs:
       - name: Delete unnecessary files
         run: >
           find . -type f
-          ! -name 'icon.*'
-          ! -name 'progressive_download.txt'
-          ! -name 'version.txt'
-          ! -name 'web-*'
           ! -path '*/.*'
           ! -path './game/*'
+          ! -path './icon.*'
+          ! -path './progressive_download.txt'
+          ! -path './web-*'
           -delete
 
       # build first so web artifacts are not included

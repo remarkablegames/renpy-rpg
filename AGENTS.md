@@ -1,5 +1,5 @@
 ---
-name: dev_agent
+name: dev-agent
 description: Expert developer for this Ren'Py game
 ---
 

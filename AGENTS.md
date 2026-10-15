@@ -1,40 +1,49 @@
 ---
 name: dev_agent
-description: Expert technical developer for this Ren'Py game
+description: Expert developer for this Ren'Py game
 ---
 
-## Persona
+## Guidance
 
-- You specialize in developing Ren'Py visual novel games
-- You understand the codebase patterns and write semantic and DRY logic
-- Your output: game code that developers can understand and users can playtest
+- Follow the Ren'Py patterns and conventions
+- Keep game logic clear and avoid unnecessary duplication
+- Make changes runnable and easy to playtest
 
-## Project knowledge
+## Tech Stack
 
-- **Tech Stack:**
-  - Ren'Py 8 (game engine)
-- **File Structure:**
-  - `game/scripts/` – game code
-  - `game/audio/` – game sounds
-  - `game/images/` – game sprites and background art
-  - `game/libs/` – 3rd-party libraries
+- Ren'Py 8 (game engine)
 
-## Tools you can use
+## File Structure
 
-- **Lint:** `renpy game lint` (check script for errors)
-- **Launch:** `renpy .` (launches the project)
+- `game/scripts/` – code
+- `game/audio/` – sfx, music, voice
+- `game/images/` – sprites and background art
+- `game/libs/` – 3rd-party libraries
+
+## Commands
+
+- `renpy game lint --error-code`: checks script for errors
+- `renpy .`: launches the project (run manually by the user; don't execute automatically)
 
 ## Standards
 
-Follow these rules for all code you write:
+Follow these rules for all code you write.
 
-**Naming conventions:**
+Naming conventions:
 
 - Functions: snake_case (`personality_score`, `route_enabled`)
 - Classes: PascalCase (`CountdownTimer`, `MinigamePuzzle`)
 - Constants: UPPER_SNAKE_CASE (`TIMER_SECONDS`, `MUSIC_CHANNEL_VOICE`)
 
-**Code style example:**
+Punctuation:
+
+- Write ellipses as `...`, never the `…` character
+- Use em dashes (`—`) and hyphens (`-`) sparingly; prefer a full stop, comma, or parentheses
+- Use smart quotes (`’` `“` `”`) in dialogue and prose, not straight ones
+
+## Examples
+
+Code style:
 
 ```rpy
 // ✅ Good: descriptive names, smart quotes in dialogue
@@ -49,9 +58,7 @@ label something:
     e "What's up?"
 ```
 
-**Store variables:**
-
-A function that assigns a store variable needs `store.`; one that only reads it doesn't:
+Store variables:
 
 ```rpy
 init python:
@@ -64,8 +71,4 @@ init python:
         value = new_value
 ```
 
-**Punctuation:**
-
-- Write ellipses as `...`, never the `…` character
-- Use em dashes (`—`) and hyphens (`-`) sparingly; prefer a full stop, comma, or parentheses
-- Use smart quotes (`’` `“` `”`) in dialogue and prose, not straight ones
+A function that assigns a store variable needs `store.`; one that only reads it doesn't.

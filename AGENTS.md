@@ -5,7 +5,7 @@ description: Expert developer for this Ren'Py game
 
 ## Guidance
 
-- Follow the Ren'Py patterns and conventions
+- Follow Ren'Py patterns and conventions
 - Keep game logic clear and avoid unnecessary duplication
 - Make changes runnable and easy to playtest
 
@@ -15,10 +15,10 @@ description: Expert developer for this Ren'Py game
 
 ## File Structure
 
-- `game/scripts/` – code
-- `game/audio/` – sfx, music, voice
-- `game/images/` – sprites and background art
-- `game/libs/` – 3rd-party libraries
+- `game/scripts/`: code
+- `game/audio/`: sfx, music, voice
+- `game/images/`: sprites and background art
+- `game/libs/`: 3rd-party libraries
 
 ## Commands
 
@@ -26,8 +26,6 @@ description: Expert developer for this Ren'Py game
 - `renpy .`: launches the project (run manually by the user; don't execute automatically)
 
 ## Standards
-
-Follow these rules for all code you write.
 
 Naming conventions:
 

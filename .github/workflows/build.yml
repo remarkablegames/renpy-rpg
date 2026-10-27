@@ -8,15 +8,14 @@ concurrency:
   group: ${{ github.workflow_ref }}
   cancel-in-progress: ${{ github.ref_name != 'master' }}
 
-env:
-  GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
-
 permissions:
   contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
     steps:
       - name: Checkout repository
